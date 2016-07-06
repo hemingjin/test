@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		.s-item-box{
+			position: absolute;
+			border-right:1px solid #ccc;
+			border-left:1px solid #ccc;
+			
+			left:-1px;
+			top:71px;
+			width: 248px;
+			height: 143px;
+			background-color: #fff;
+			z-index: 1;
+			display: none;
+		}
+		.r-service li.box-on{
+			border-top: 2px solid #C81623;
+			border-bottom:1px solid #fff ;
+		}
+	</style>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script>
+		$(function(){	
+			$(".item-box").hover(function(){
+				$(this).addClass("box-on").children(".s-item-box").css("display","block");
+			},function(){
+				$(this).removeClass("box-on").children(".s-item-box").css("display","none");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="banner-r">
+			<div class="r-info">
+				<span>生活服务</span>
+			</div>
+			<ul class="r-service">
+				<li class="service-icon icon-1 item-box">
+					<a href=""><i class="s-icon"></i><span>话费</span></a>
+					<div class="s-item-box box-on">
+						1
+					</div>
+				</li>
+				<li class="service-icon icon-2 item-box">
+
+					<a href=""><i class="s-icon"></i><span>机票</span></a>
+					<div class="s-item-box" style="left:-63px">
+						2
+					</div>
+				</li>
+				<li class="service-icon icon-3 item-box">
+					<a href=""><i class="s-icon"></i><span>电影</span></a>
+					<div class="s-item-box" style="left:-125px">
+						3
+					</div>
+				</li>
+				<li class="service-icon icon-4 item-box">
+					<a href=""><i class="s-icon" ></i><span>游戏</span></a>
+					<div class="s-item-box" style="left:-187px">
+						4
+					</div>
+				</li>
+			</ul>
+			<ul class="r-service">
+				<li class="service-icon icon-5"><a href=""><i class="s-icon"></i><span>彩票</span></a></li>
+				<li class="service-icon icon-6"><a href=""><i class="s-icon"></i><span>团购</span></a></li>
+				<li class="service-icon icon-7"><a href=""><i class="s-icon"></i><span>酒店</span></a></li>
+				<li class="service-icon icon-8"><a href=""><i class="s-icon"></i><span>水电</span></a></li>
+			</ul>
+			<ul class="r-service">
+				<li class="service-icon icon-9"><a href=""><i class="s-icon"></i><span>理财</span></a></li>
+				<li class="service-icon icon-10"><a href=""><i class="s-icon"></i><span>白条</span></a></li>
+				<li class="service-icon icon-11"><a href=""><i class="s-icon"></i><span>众筹</span></a></li>
+				<li class="service-icon icon-12"><a href=""><i class="s-icon"></i><span>保险</span></a></li>
+			</ul>
+		</div>
+</body>
+</html>

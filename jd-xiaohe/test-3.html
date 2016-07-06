@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		.demo{
+			position:relative;
+			height: 31px;
+		}
+		.box{
+			text-align: center;
+			width: 80px;
+			height: 30px;
+			background-color: #333;
+			line-height: 30px;
+			color:#fff;
+			float:left; 
+			position:relative;
+			z-index: 2;
+		}
+		.box:after{
+			position: absolute;
+			z-index: 2;
+			content:"";
+			border-left: 6px solid #333;
+			border-top: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+			right: -6px;
+			top: 50%;
+			margin-top: -5px;
+			display: none;
+			transition: all 0.3s ease-in-out;
+		}
+		.hide{
+			float:left;
+			width: 120px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			background-color: red;
+			color:#fff;
+			transform: translateX(-100%);
+			transition: all 0.3s ease-in-out;
+		}
+		.demo:hover .hide{
+			transform: translateX(0%);
+		}
+		.demo:hover .box:after{
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="demo" id="demo">
+		<div class="box">HELLO</div>
+		<div class="hide" id="animate">hello world</div>
+	</div>
+	<div class="demo" id="demo">
+		<div class="box">HELLO</div>
+		<div class="hide" id="animate">hello world</div>
+	</div>
+	<div class="demo" id="demo">
+		<div class="box">HELLO</div>
+		<div class="hide" id="animate">hello world</div>
+	</div>
+	<div class="demo" id="demo">
+		<div class="box">HELLO</div>
+		<div class="hide" id="animate">hello world</div>
+	</div>
+</body>
+</html>

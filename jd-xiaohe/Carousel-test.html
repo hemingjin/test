@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jq图片轮播测试</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+		img{border:none;}
+		.carousel{
+			width: 730px;
+			height: 454px;
+			margin:0 auto;
+			position: relative;
+			overflow: hidden;
+		}
+		.pic{
+			/*width: 2920px;*/
+			height: 454px;
+			position: absolute;
+		}
+		.pic li{
+			list-style: none;
+			float: left;
+			width: 730px;
+			height: 454px;
+			position: relative;
+		}
+		.pic li.active{
+			display: block;
+		}
+		.arrows{
+		    position: absolute;
+		    left: 50%;
+		    margin-left: -70px;
+		    bottom:10px;
+		    z-index: 1;
+		}
+		.arrows li{
+			display: block;
+			float: left;
+			margin-right: 5px;
+		    width: 20px;
+		    height: 20px;
+		    text-align: center;
+		    font-size: 12px;
+		    line-height: 20px;
+		    background-color: #333;
+		    color:#fff;
+		    border-radius: 10px;
+		    cursor: pointer;
+		}
+		.arrows li.arrow-on{
+			background-color: #e74c3c;
+		}
+		.prev,.next{
+		    position: absolute;
+		    width: 30px;
+		    height: 40px;
+		    top:50%;
+		    margin-top: -20px;
+		    opacity: 0.6;
+		    filter:alpha(opacity=60);
+		    cursor: pointer;
+		    display: none;
+		    text-align: center;
+		    line-height: 40;
+		    z-index: 999;
+		}
+		.carousel:hover .prev,
+		.carousel:hover .next{
+			display: block;
+		}
+		.prev:hover,.next:hover{
+		    opacity: 0.9;
+		    filter:alpha(opacity=90);
+		}
+		.prev{
+		    left: 0;
+		    background: url(img/arrow.png) 0 -40px no-repeat transparent;
+		}
+		.next{
+		    right: 0;
+		    background: url(img/arrow.png) 0 0 no-repeat transparent;
+		}
+	</style>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<!--<script>
+		$(function(){
+			var carouselIndex=0;
+			//var picl=$(".pic li");
+				// alert(picl.length);
+			$(".arrows li").mouseover(function(){
+				carouselIndex = $(this).index();			
+				// Carousel();
+					$(this).parents(".carousel").find(".pic li").removeClass("active").eq(carouselIndex).addClass("active");
+				$(this).addClass("arrow-on").siblings().removeClass("arrow-on");				
+			});
+			// function Carousel(){
+			// 	$(".pic li").removeClass("active").eq(carouselIndex).addClass("active");
+			// 	$(".arrows li").removeClass("arrow-on").eq(carouselIndex).addClass("arrow-on");
+			// }
+			// $("#next").click(function(){
+			// 	for(var i=1;i<=picl.length;i++){
+			// 		alert(i);
+			// 		$(".pic li").removeClass("active").eq(i).addClass("active");
+			// 		// if(i==picl.length){
+			// 		// 	i=0;
+			// 		// }					
+			// 	}
+				
+				//$(".arrows li").removeClass("arrow-on").eq(carouselIndex++).addClass("arrow-on");
+			// });
+		});
+	</script>-->
+	<script>
+	$(function(){
+		var index=0;
+		var picWidth=$(".carousel").width();//获取焦点图的宽度
+		var picLength=$(".pic li").length;//获取图片的个数
+		var timer;//定义一个定时器，用于自动切换
+		$(".pic").css("width",picWidth*(picLength));
+		
+		$("#next").click(function(){
+			index += 1;
+			if(index == picLength)
+				index = 0;
+			Carousel(index);
+		});
+		$("#prev").click(function(){
+			index -= 1;
+			if(index == -1)
+				index = picLength-1;
+			Carousel(index);
+		});
+		$(".arrows li").mouseover(function(){
+			index = $(this).index();
+			// alert(index);
+			Carousel(index);
+		});
+		//图片切换，根据接收的index显示对应内容
+		function Carousel(index){
+			var newLeft = -index * picWidth;  
+			$(".pic").stop(true,false).animate({"left":newLeft},300);
+			$(".arrows li").stop(true,false).siblings().removeClass("arrow-on").eq(index).addClass("arrow-on");
+		}
+		//滑入停止自动切换，滑出开始自动切换
+		$(".carousel").hover(function(){
+			clearInterval(timer);
+		},function(){
+			timer=setInterval(function(){
+				Carousel(index);
+				index++;
+				if(index == picLength)
+					index = 0;
+			},3000);
+		}).trigger("mouseleave");  //
+		//-----------------------------------
+		// var carouselIndex=0;
+		// $("#arrow-btn li").mouseover(function(){
+		// 	carouselIndex = $(this).index();			
+		// 	$(this).parents("#carousel-1").find(".pic").css("left",-(carouselIndex*picWidth));
+		// 	$(this).addClass("arrow-on").siblings().removeClass("arrow-on");				
+		// });
+	});		
+	
+	
+	</script>
+</head>
+<body>
+	<div class="carousel" id="carousel">
+		<ul class="pic" style="left:0px">
+			<li><img src="img/banner-1.jpg" alt=""></li>
+			<li><img src="img/banner-2.jpg" alt=""></li>
+			<li><img src="img/banner-3.jpg" alt=""></li>
+			<li><img src="img/banner-4.jpg" alt=""></li>
+		</ul>
+		<a class="prev" id="prev" href="javascript:;"></a>
+		<a class="next" id="next" href="javascript:;"></a>
+		<ul class="arrows" id="arrow-btn">
+			<li index="1" class="arrow-on">1</li>
+			<li index="2">2</li>
+			<li index="3">3</li>
+			<li index="4">4</li>
+		</ul>
+	</div>
+	<!-- <div class="carousel" id="carousel-1">
+		<ul class="pic" style="left:0px">
+			<li class="active"><img src="img/banner-1.jpg" alt=""></li>
+			<li><img src="img/banner-2.jpg" alt=""></li>
+			<li><img src="img/banner-3.jpg" alt=""></li>
+			<li><img src="img/banner-4.jpg" alt=""></li>
+		</ul>
+		<a class="prev" id="prev" href="javascript:;"></a>
+		<a class="next" id="next" href="javascript:;"></a>
+		<ul class="arrows" id="arrow-btn">
+			<li index="1" class="arrow-on">1</li>
+			<li index="2">2</li>
+			<li index="3">3</li>
+			<li index="4">4</li>
+		</ul>
+	</div> -->
+</body>
+</html>

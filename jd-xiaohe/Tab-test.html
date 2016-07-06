@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        *{margin:0;padding:0;list-style-type:none;font-size:12px;}
+        a{text-decoration:none;}
+        a:link,a:visited{text-decoration:none;}
+        a:hover{color:#3498DB;}
+        .tab{width:298px;height:98px;border:1px solid #3498DB;margin:30px;overflow:hidden;border-radius:2px;}
+        .tab-top{height:27px;position:relative;background-color:#3498DB;}
+        .tab-top ul{position:absolute;left:-1px;width:301px;}
+        .tab .tab-top li{float:left;width:58px;height:26px;padding:0 1px;line-height:26px;text-align:center;background-color:#3498DB;border-bottom:1px solid #3498DB;}
+        .tab-top ul li a{color:#fff;}
+        .tab .tab-top li.selected{border-bottom-color:#fff;border-left:1px solid #3498DB;border-right:1px solid #3498DB;padding:0;background:#fff;font-weight:bolder;}
+        .tab .tab-top li.selected a{color:#3498DB;}
+        .tab-content .mod{margin:10px 10px 10px 19px;}
+        .tab-content .mod li{float:left;width:134px;height:30px;overflow:hidden;}
+        .tab .tab-top li:hover{cursor:pointer;}
+	</style>
+	<script>
+		// function $(id){
+		// 	return typeof id==='string'?document.getElementById(id):id;
+		// }
+		// window.onload=function(){
+		// 	var tabtop=$('tab-top').getElementsByTagName('li');
+		// 	var	tabcontent=$('tab-content').getElementsByTagName('div');
+		// 	//alert(tabtop.length+','+tabcontent.length);
+		// 	if(tabtop.length!=tabcontent.length)
+		// 		return;
+		// 	for(var i=0;i<tabtop.length;i++){
+		// 		tabtop[i].id=i;
+		// 		tabtop[i].onmouseover=function(){
+		// 			for(var j=0;j<tabtop.length;j++){
+		// 				tabtop[j].className='';
+		// 				tabcontent[j].style.display='none';
+		// 			}
+		// 			this.className="selected";
+		// 			tabcontent[this.id].style.display='block';
+		// 		}
+		// 	}
+		// }
+	</script>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script>
+		$(function(){
+			$("#tab-top li").click(function(event){
+				$(this).addClass("selected").siblings().removeClass("selected").parents(".tab").find(".mod").eq($(this).index()).css("display","block").siblings().css("display","none");
+			})
+		});
+	</script>
+</head>
+<body>
+	<div id="tab" class="tab">
+		<div id="tab-top" class="tab-top">
+			<ul>
+				<li><a href="#">呵呵</a></li>
+				<li><a href="#">哈哈</a></li>
+				<li><a href="#">嘿嘿</a></li>
+				<li><a href="#">嘎嘎</a></li>
+				<li class="selected"><a href="#">喔喔</a></li>
+			</ul>
+		</div>
+		<div id="tab-content" class="tab-content">
+			<div class="mod" style="display:none">
+				<ul>
+					<li><a href="#">呵呵代表了很多意思</a></li>
+					<li><a href="#">呵呵代表了很多意思</a></li>
+					<li><a href="#">呵呵代表了很多意思</a></li>
+					<li><a href="#">呵呵代表了很多意思</a></li>
+				</ul>
+			</div>
+			<div class="mod" style="display:none">
+				<ul>
+					<li><a href="#">哈哈代表了很多意思</a></li>
+					<li><a href="#">哈哈代表了很多意思</a></li>
+					<li><a href="#">哈哈代表了很多意思</a></li>
+					<li><a href="#">哈哈代表了很多意思</a></li>
+				</ul>
+			</div>
+			<div class="mod" style="display:none">
+				<ul>
+					<li><a href="#">嘿嘿代表了很多意思</a></li>
+					<li><a href="#">嘿嘿代表了很多意思</a></li>
+					<li><a href="#">嘿嘿代表了很多意思</a></li>
+					<li><a href="#">嘿嘿代表了很多意思</a></li>
+				</ul>
+			</div>
+			<div class="mod" style="display:none">
+				<ul>
+					<li><a href="#">嘎嘎代表了很多意思</a></li>
+					<li><a href="#">嘎嘎代表了很多意思</a></li>
+					<li><a href="#">嘎嘎代表了很多意思</a></li>
+					<li><a href="#">嘎嘎代表了很多意思</a></li>
+				</ul>
+			</div>
+			<div class="mod" >
+				<ul>
+					<li><a href="#">喔喔代表了很多意思</a></li>
+					<li><a href="#">喔喔代表了很多意思</a></li>
+					<li><a href="#">喔喔代表了很多意思</a></li>
+					<li><a href="#">喔喔代表了很多意思</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+    <div id="tab" class="tab">
+        <div id="tab-top" class="tab-top">
+            <ul>
+                <li><a href="#">呵呵</a></li>
+                <li><a href="#">哈哈</a></li>
+                <li><a href="#">嘿嘿</a></li>
+                <li><a href="#">嘎嘎</a></li>
+                <li class="selected"><a href="#">喔喔</a></li>
+            </ul>
+        </div>
+        <div id="tab-content" class="tab-content">
+            <div class="mod" style="display:none">
+                <ul>
+                    <li><a href="#">呵呵代表了很多意思</a></li>
+                    <li><a href="#">呵呵代表了很多意思</a></li>
+                    <li><a href="#">呵呵代表了很多意思</a></li>
+                    <li><a href="#">呵呵代表了很多意思</a></li>
+                </ul>
+            </div>
+            <div class="mod" style="display:none">
+                <ul>
+                    <li><a href="#">哈哈代表了很多意思</a></li>
+                    <li><a href="#">哈哈代表了很多意思</a></li>
+                    <li><a href="#">哈哈代表了很多意思</a></li>
+                    <li><a href="#">哈哈代表了很多意思</a></li>
+                </ul>
+            </div>
+            <div class="mod" style="display:none">
+                <ul>
+                    <li><a href="#">嘿嘿代表了很多意思</a></li>
+                    <li><a href="#">嘿嘿代表了很多意思</a></li>
+                    <li><a href="#">嘿嘿代表了很多意思</a></li>
+                    <li><a href="#">嘿嘿代表了很多意思</a></li>
+                </ul>
+            </div>
+            <div class="mod" style="display:none">
+                <ul>
+                    <li><a href="#">嘎嘎代表了很多意思</a></li>
+                    <li><a href="#">嘎嘎代表了很多意思</a></li>
+                    <li><a href="#">嘎嘎代表了很多意思</a></li>
+                    <li><a href="#">嘎嘎代表了很多意思</a></li>
+                </ul>
+            </div>
+            <div class="mod" >
+                <ul>
+                    <li><a href="#">喔喔代表了很多意思</a></li>
+                    <li><a href="#">喔喔代表了很多意思</a></li>
+                    <li><a href="#">喔喔代表了很多意思</a></li>
+                    <li><a href="#">喔喔代表了很多意思</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
